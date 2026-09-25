@@ -26,6 +26,7 @@ export default function App() {
     pause,
     reset,
     switchMode,
+    skip,
     updateSettings,
   } = usePomodoro();
 
@@ -104,6 +105,7 @@ export default function App() {
           onStart={start}
           onPause={pause}
           onReset={reset}
+          onSkip={skip}
         />
       </div>
 

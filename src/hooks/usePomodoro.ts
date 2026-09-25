@@ -136,6 +136,19 @@ export function usePomodoro() {
     setTimeLeft(settings[newMode] * 60);
   };
 
+  const skip = () => {
+    clearTimer();
+    setIsRunning(false);
+    if (mode === 'focus') {
+      const nextMode = (stats.sessionsCompleted + 1) % 4 === 0 ? 'longBreak' : 'shortBreak';
+      setMode(nextMode);
+      setTimeLeft(settings[nextMode] * 60);
+    } else {
+      setMode('focus');
+      setTimeLeft(settings.focus * 60);
+    }
+  };
+
   const updateSettings = (newSettings: TimerSettings) => {
     setSettings(newSettings);
     if (!isRunning) {
@@ -157,6 +170,7 @@ export function usePomodoro() {
     pause,
     reset,
     switchMode,
+    skip,
     updateSettings,
   };
 }
