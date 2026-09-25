@@ -49,11 +49,13 @@ export default function App() {
         isRunning ? pause() : start();
       } else if (e.code === 'KeyR') {
         reset();
+      } else if (e.code === 'KeyS') {
+        skip();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isRunning, start, pause, reset, showSettings]);
+  }, [isRunning, start, pause, reset, skip, showSettings]);
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-8 relative overflow-hidden">
@@ -123,6 +125,10 @@ export default function App() {
         <span className="flex items-center gap-1">
           <kbd className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-white/30">R</kbd>
           Reset
+        </span>
+        <span className="flex items-center gap-1">
+          <kbd className="px-1.5 py-0.5 rounded bg-white/5 border border-white/10 text-white/30">S</kbd>
+          Skip
         </span>
       </div>
 
